@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body class="news">
+<div id="wrapper">
+    <span class="menu-btn overlay"></span>
+    {% include header.html %}
+        {{ content }}
+    {% include footer.html %}
+</div>
+{% include sidebar_menu.html %}
+
+{% include script.html %}
+</body>
+</html>

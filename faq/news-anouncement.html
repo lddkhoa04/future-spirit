@@ -1,0 +1,55 @@
+---
+title: お知らせ
+layout: faq
+categories: faq
+tag: news
+priority: 3
+---
+<ul class="menu-tabs-mobile menu-tabs color large items-2" >
+{% for front_page in site.pages %}
+    {% if front_page.tag == 'news' %}
+    <li {% if front_page.url == page.url %} class="active" {% endif %}>
+        <a href="{{ front_page.url | prepend: site.baseurl }}">{{ front_page.title }} </a>
+    </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+
+<div class=" pb-50 ">
+    <div class="accordion-notice accordion-group" id="accordion" role="tablist" aria-multiselectable="true">
+        {% assign counter = 0 %}
+        {% assign posts = site.posts | limit: 10 %}
+        {% for post in posts %}
+        {% if post.categories contains 'notice' %}
+        {% assign counter = counter | plus: 1 %}
+        <div class="panel">
+            <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#accordion-{{ counter }}"
+                       aria-expanded="{% if counter == 1 %} true {% else %} false {% endif %}" aria-controls="accordion-{{ counter }}" class="{% if counter > 1 %} collapsed {% endif %}">
+                        <span class="date">{{ post.date | date: "%Y/%m/%d" }}</span>
+                        {{ post.title }}
+                    </a>
+                </h4>
+            </div>
+            <div id="accordion-{{ counter }}" class="panel-collapse collapse {% if counter == 1 %} in {% endif %}" role="tabpanel"
+                 aria-labelledby="headingOne">
+                <div class="panel-body">
+                    {{ post.content }}
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% if counter > 10 %}
+<div class="pagination">
+    <a href="#" class="prev"> <i class="icon-arrow-1"></i> PRV </a>
+    <a href="#" class="next"> NXT <i class="icon-arrow-1"></i> </a>
+</div>
+{% endif %}

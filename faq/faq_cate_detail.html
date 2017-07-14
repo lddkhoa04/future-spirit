@@ -1,0 +1,44 @@
+---
+title: よくある質問
+layout: faq
+categories: faq
+tag: faq_cate_detail
+---
+<a href="{{site.baseurl}}/faq/faq-list.html" class="visible-sm btn btn-xs pull-right">よくある質問 TOP</a>
+<h1 class="h2">
+    よくある質問
+</h1>
+<ul class="list-square large">
+    <li class="fs-22">レンタルサーバーについて</li>
+</ul>
+
+
+<div class="accordion-faq accordion-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {% assign counter = 0 %}
+    {% for post in site.posts %}
+    {% if post.categories contains 'notice' %}
+    {% assign counter = counter | plus: 1 %}
+
+    <div class="panel">
+        <div class="panel-heading" role="tab">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#accordion-{{ counter }}"
+                   aria-expanded="true" aria-controls="accordion-{{ counter }}">
+                    {{ post.title }}</a>
+            </h4>
+        </div>
+        <div id="accordion-{{ counter }}" class="panel-collapse collapse {% if counter == 1 %} in {% endif %}" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                {{ post.content }}
+            </div>
+        </div>
+    </div>
+    <!-- /panel -->
+    {% endif %}
+    {% endfor %}
+</div>
+
+<div class="pagination">
+    <a href="#" class="prev"> <i class="icon-arrow-1"></i> PRV </a>
+    <a href="#" class="next"> NXT <i class="icon-arrow-1"></i>  </a>
+</div>

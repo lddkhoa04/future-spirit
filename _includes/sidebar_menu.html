@@ -1,0 +1,57 @@
+<!--Sidebar Menu-->
+<div class="sidebar-menu">
+    <div class="top">
+        MENU <span class="menu-btn"> <i class="icon-cancel"></i>  </span>
+    </div>
+    <ul class="mainmenu">
+        <li class="parent"><a href="#"> サービス</a>
+            <ul>
+                {% for front_page in site.pages %}
+                {% if front_page.categories == 'package-plan' %}
+                {% if front_page.tag != 'related' %}
+                <li {% if front_page.url == page.url %} class="active" {% endif %}>
+                    <a href="{{ front_page.permalink }}" class="item">{{ front_page.title }} </a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="parent"><a href="#"> 関連サービス</a>
+            <ul>
+                {% for front_page in site.pages %}
+                {% if front_page.categories == 'package-plan' %}
+                {% if front_page.tag == 'related' %}
+                <li {% if front_page.url == page.url %} class="active" {% endif %}>
+                    <a href="{{ front_page.permalink }}" class="item">{{ front_page.title }} </a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="parent"><a href="#"> サポート</a>
+            <ul>
+                <li><a href="#" class="item">よくある質問</a></li>
+                <li><a href="#" class="item">ご利用開始までの流れ</a></li>
+                <li><a href="#" class="item">お知らせ</a></li>
+                <li><a href="#" class="item">障害・メンテナンス</a></li>
+                <li><a href="#" class="item">お問い合わせ</a></li>
+            </ul>
+        </li>
+        <li class="parent"><a href="#"> 会社情報</a>
+            <ul>
+                <li><a href="#" class="item">会社概要</a></li>
+                <li><a href="#" class="item">アクセス</a></li>
+                <li><a href="#" class="item">プライバシーポリシー</a></li>
+                <li><a href="#" class="item">サービス規約</a></li>
+                <li><a href="#" class="item">ウェブサイトご利用規約</a></li>
+                <li><a href="#" class="item">反社会的勢力への対応</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="language">
+        <a href="#" class="btn btn-grey-lighter"> English </a>
+    </div>
+</div>
+<!--End Sidebar Menu-->

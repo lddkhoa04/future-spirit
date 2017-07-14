@@ -1,0 +1,84 @@
+<!-- Footer -->
+<footer id="footer">
+    <a id="back-top" class="" href="#"> <img src="{{ 'images/arrow-2.svg' | prepend: site.baseurl }}" alt=""/></a>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="widget widget-menu">
+                    <h3 class="widget-title">サービス</h3>
+                    <div class="wdiget-content">
+                        <ul class="menu">
+                            {% for front_page in site.pages %}
+                            {% if front_page.categories == 'package-plan' %}
+                            {% if front_page.tag != 'related' %}
+                            <li>
+                                <a href="{{ front_page.permalink }}" class="item">{{ front_page.title }} </a>
+                            </li>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="widget widget-menu">
+                    <h3 class="widget-title">関連サービス</h3>
+                    <div class="wdiget-content">
+                        <ul class="menu">
+                            {% for front_page in site.pages %}
+                            {% if front_page.categories == 'package-plan' %}
+                            {% if front_page.tag == 'related' %}
+                            <li>
+                                <a href="{{ front_page.permalink }}" class="item">{{ front_page.title }} </a>
+                            </li>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="widget widget-menu">
+                    <h3 class="widget-title">サポート</h3>
+                    <div class="wdiget-content">
+                        <ul class="menu">
+                            {% assign sorted_pages = (site.pages | sort: 'priority') %}
+                            {% for front_page in sorted_pages %}
+                            {% if front_page.categories == 'faq' and front_page.tag != 'faq_cate_detail'%}
+                            <li {% if front_page.url == page.url %} class="active" {% endif %}>
+                                <a href="{{ front_page.url | prepend: site.baseurl }}" class="item">{{ front_page.title }} </a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="widget widget-menu">
+                    <h3 class="widget-title">会社情報</h3>
+                    <div class="wdiget-content">
+                        <ul class="menu">
+                            {% assign sorted_pages = (site.pages | sort: 'priority') %}
+                            {% for front_page in sorted_pages %}
+                            {% if front_page.category == 'company'  %}
+                            <li {% if front_page.url == page.url %} class="active" {% endif %}>
+                                <a href="{{ front_page.url | prepend: site.baseurl }}" class="item">{{ front_page.title }} </a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <span class="text">© Future Spirits Malaysia Sdn. Bhd. All rights reserved.</span> &nbsp;
+            <a href="#"><i class="icon-folder"></i> サイトマップ </a>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->

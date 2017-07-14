@@ -1,0 +1,57 @@
+<!-- Header -->
+<header  id="header" >
+    <div class="container">
+        <a title="Geologix" href="{{ site.baseurl }}" id="logo" class=" logo-image" rel="home"> <span class="display-table"> <span class="table-cell"><img src="{{ 'images/active/logo.png' | prepend: site.baseurl }}" alt="Future Spirits" > </span> </span> </a>
+        <div class="header-left" >
+            <ul class="mainmenu-pc">
+                <li ><a href="#"> サービス</a>
+                    <ul>
+                    {% for front_page in site.pages %}
+                        {% if front_page.categories == 'package-plan' %}
+                        {% if front_page.tag != 'related' %}
+                        <li {% if front_page.url == page.url %} class="active" {% endif %}><a href="{{ front_page.permalink }}">{{ front_page.title }} </a></li>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="#"> サポート </a>
+                    <ul>
+                        <li><a href="#" class="">よくある質問</a></li>
+                        <li><a href="#" class="">ご利用開始までの流れ</a></li>
+                        <li><a href="#" class="">お知らせ</a></li>
+                        <li><a href="#" class="">障害・メンテナンス</a></li>
+                        <li><a href="#" class="">お問い合わせ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="header-right ">
+        <div class="wrap-phone">
+            <span class="phone-btn"><i class="icon-phone2"></i></span>
+            <div class="phone">
+                <div class="item"><span class="title">マレーシア国内</span> <span class="number">03 2725 8015</span></div>
+                <div class="item"><span class="title">日本から</span> <span class="number">+60 3 2725 8015</span></div>
+            </div>
+        </div>
+        {% if page.url == "/" or page.url == "/index.html" %}
+        <div class="language">
+            <a href="#" class="btn btn-sm text-uppercase">English</a>
+        </div>
+        {% else %}
+        <div class="contact">
+            <a href="#"> お問合せ </a>
+        </div>
+        {% endif %}
+        {% if page.url != "/index.html" and  page.url != "/" %}
+        <div class="menu-btn">
+          <span class="item-btn">
+            <span></span>
+          </span>
+            Menu
+        </div>
+        {% endif %}
+    </div>
+</header>
+<!-- End Header -->

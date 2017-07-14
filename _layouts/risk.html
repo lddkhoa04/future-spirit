@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body class="news">
+<div id="wrapper">
+    <span class="menu-btn overlay"></span>
+    {% include header.html %}
+    <section id="section-breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="{{ site.baseurl }}"> <span>HOME</span></a></li>
+                <li><a href="#">{{ page.title }}</a></li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="text-center mb-70 hidden-xs">
+                <h1>リスクマネージメント</h1>
+                <h5>マレーシアでよくありがちな自然災害や人的ミスによる被害を回避しましょう！</h5>
+            </div>
+            <div class="wrap-tabs management-tab hidden-xs">
+                <!-- Nav tabs -->
+                <ul class="menu-tabs items-3" >
+                    {% for front_page in site.pages %}
+                    {% if front_page.categories == 'risk' %}
+                    <li {% if front_page.url == page.url %} class="active" {% endif %}>
+                        <a href="{{ front_page.url | prepend: site.baseurl }}">
+                            <span class="top">
+                              <span class="images">
+                                <img class="img" src="{{ front_page.img | prepend: site.baseurl }}" alt="{{ front_page.title }} {{ front_page.bottom-title }} ">
+                                <img class="img-active" src="{{ front_page.img-active | prepend: site.baseurl }}" alt="{{ front_page.title }} {{ front_page.bottom-title }}">
+                              </span>
+                              <span class="title">{{ front_page.bottom-title }}</span>
+                            </span>
+                            <span class="bottom">{{ front_page.title }} </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div  class="tab-pane " id="tab-page-3">
+                {{ content }}
+            </div>
+        </div>
+    </section>
+    <section class="section-feature row-section">
+        <div class="container">
+            <!-- items-grid -->
+            <div class="row groupbtn">
+                <div class="col-md-8 col-md-offset-2">
+                    <a href="#" class="btn btn-primary btn-lg iconright mb-15">
+                        お申し込み / ３０日無料トライアル <i class="icon-arrow-1"></i>
+                    </a>
+                    <div class="row grid-space-0">
+                        <div class="col-sm-6">
+                            <ul class="list-arrow pt-8">
+                                <li>ご利用開始までの流れ</li>
+                                <li>よくある質問</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="#" class="btn btn-grey btn-md iconright ">
+                                ご相談・お問い合わせ <i class="icon-arrow-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- groupbtn -->
+        </div>
+    </section>
+
+
+
+
+    {% include footer.html %}
+</div>
+{% include sidebar_menu.html %}
+
+{% include script.html %}
+</body>
+</html>

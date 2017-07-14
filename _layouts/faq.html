@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body class="news">
+<div id="wrapper">
+    <span class="menu-btn overlay"></span>
+    {% include header.html %}
+    <section id="section-breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="{{ site.baseurl }}"> <span>HOME</span></a></li>
+                <li><a href="#">{{ page.title }}</a></li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 maincontent">
+                    {{ content }}
+                </div>
+                <div class="col-md-3 sidebar">
+                    <div class="widget widget-menu">
+                        <h3 class="widget-title">サポート</h3>
+                        <div class="widget-content">
+                            <ul class="menu">
+                                {% assign sorted_pages = (site.pages | sort: 'priority') %}
+                                {% for front_page in sorted_pages %}
+                                {% if front_page.categories == 'faq' and front_page.tag != 'faq_cate_detail'%}
+                                <li {% if front_page.url == page.url %} class="active" {% endif %}>
+                                    <a href="{{ front_page.url | prepend: site.baseurl }}">{{ front_page.title }} </a>
+                                    {% if front_page.tag == 'faq_cate' %}
+                                    <ul>
+                                        <li><a href="#">レンタルサーバーについて</a></li>
+                                        <li><a href="#">ドメイン、SSL証明書について</a></li>
+                                        <li><a href="#">その他サービスについて</a></li>
+                                        <li><a href="#">サポート・お取引について</a></li>
+                                        <li><a href="#">当社について</a></li>
+                                        <li><a href="#">その他</a></li>
+                                    </ul>
+                                    {% endif %}
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include footer.html %}
+</div>
+{% include sidebar_menu.html %}
+
+{% include script.html %}
+</body>
+</html>
