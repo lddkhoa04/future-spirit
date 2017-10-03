@@ -28,7 +28,7 @@
                                 {% for front_page in sorted_pages %}
                                 {% if front_page.categories == 'faq' and front_page.tag != 'faq_cate_detail'%}
                                 <li {% if front_page.url == page.url %} class="active" {% endif %}>
-                                    <a href="{{ front_page.url | prepend: site.baseurl }}">{{ front_page.title }} </a>
+                                    <a href="{{ front_page.url }}">{{ front_page.title }} </a>
                                     {% if front_page.tag == 'faq_cate' %}
                                     <ul>
                                         <li><a href="#">レンタルサーバーについて</a></li>
